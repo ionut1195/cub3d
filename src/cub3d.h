@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 10:00:12 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:52:29 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_textures {
 }	t_textures;
 
 typedef struct s_cub3d {
+	char		**lines;
 	t_map		*map;
 	t_player	*player;
 	t_textures	*textures;
@@ -89,4 +90,5 @@ t_bool	get_map(t_cub3d *cub3d, const char **lines);
 
 //CLEANUP
 void	destroy_lines(char **lines);
+void	destroy_everything(t_cub3d *cub3d);
 #endif /* CUB3D_H */

@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:56:12 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/11 15:05:26 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:52:20 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,12 @@ static void	parse(t_cub3d *cub3d, char **lines)
 	{
 		printf("Error\n%s: Invalid texture info\n", lines[i - 1]);
 		destroy_lines(lines);
+		destroy_everything(cub3d);
 		exit (1);
 	}
 	while (!lines[i][0])
 		i++;
-	if (get_map(cub3d, (const char**)&lines[i]) == FALSE)
+	if (get_map(cub3d, (const char **)&lines[i]) == FALSE)
 	{
 		destroy_lines(lines);
 		exit (1);

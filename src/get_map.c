@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:00:55 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 10:17:36 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:55:26 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 */
 
 /*		THIS IS FOR TESTING ONLY!!*/
+/*************************************/
 void printmap(t_map *map)
 {
 	for (int i = 0; i < map->height; i++)
@@ -35,6 +36,7 @@ void printmap(t_map *map)
 		printf("\n");
 	}
 }
+/*************************************/
 
 static void	get_map_size(t_map *map, const char **lines)
 {
@@ -104,8 +106,6 @@ static void	fill_map(t_map *map, const char **lines)
 	}
 }
 
-
-
 t_bool	get_map(t_cub3d *cub3d, const char **lines)
 {
 	get_map_size(cub3d->map, lines);
@@ -113,6 +113,6 @@ t_bool	get_map(t_cub3d *cub3d, const char **lines)
 	if (!cub3d->map)
 		return (FALSE);
 	fill_map(cub3d->map, lines);
-	printmap(cub3d->map);
+printmap(cub3d->map); //REMOVE THIS LINE
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/09 15:12:00 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 10:53:30 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->player->v.x = 0;
 	cub3d->player->v.y = 0;
 	cub3d->player->v.z = 0;
+	cub3d->lines = NULL;
 	cub3d->map->height = 0;
 	cub3d->map->width = 0;
 	cub3d->map->map = NULL;
@@ -65,6 +66,7 @@ int	main(int argc, char const *argv[])
 	cub3d.textures = &textures;
 	init_cub3d(&cub3d);
 	parser(&cub3d, argv[1]);
-
+//	validate(&cub3d);
+	destroy_everything(&cub3d);
 	return (0);
 }
