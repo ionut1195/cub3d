@@ -6,11 +6,11 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:56:12 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/07 14:26:37 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:05:26 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "cub3d.h"
 
 static int	check_file(const char *file)
 {
@@ -37,25 +37,87 @@ static int	check_file(const char *file)
 	return (fd);
 }
 
-static void	parse(t_cub3d *cub3d, int fd)
+static char	**get_lines(int fd)
 {
-	char *txt;
-	(void) cub3d;
-	for (size_t i = 0; i < 25; i++)
+	char	*text;
+	char	*tmp;
+	char	buffer[BUFFER_SIZE + 1];
+	char	**out;
+
+	text = ft_strdup("");
+	ft_bzero(buffer, BUFFER_SIZE + 1);
+	while (read(fd, buffer, BUFFER_SIZE) > 0)
 	{
-			txt = get_next_line(fd);
-		printf("%s\n", txt);
-		free(txt);
+		tmp = ft_strjoin(text, buffer);
+		ft_bzero(buffer, BUFFER_SIZE + 1);
+		free(text);
+		text = tmp;
 	}
-	
+	out = ft_split(text, '\n');
+	free(text);
+	return (out);
+}
+
+static void	get_texture(t_cub3d *cub3d, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ' && line[i])
+		i++;
+	if (line[i] == 0)
+		return ;
+	if (!add_texture(cub3d->textures, &line[i]))
+		cub3d->textures->flag = 0b1000000;
+	return ;
+}
+
+/* flag:
+		 000001: north texture
+		 000010: south texture
+		 000100: east texture
+		 001000: west texture
+		 010000: floor color
+		 100000: ceiling color
+		1000000: error
+*/
+
+static void	parse(t_cub3d *cub3d, char **lines)
+{
+	int	i;
+
+	i = 0;
+	while (cub3d->textures->flag != 0b111111 && lines[i]
+		&& cub3d->textures->flag != 0b1000000)
+		get_texture(cub3d, lines[i++]);
+	if (cub3d->textures->flag == 0b1000000 || !lines[i])
+	{
+		printf("Error\n%s: Invalid texture info\n", lines[i - 1]);
+		destroy_lines(lines);
+		exit (1);
+	}
+	while (!lines[i][0])
+		i++;
+	if (get_map(cub3d, (const char**)&lines[i]) == FALSE)
+	{
+		destroy_lines(lines);
+		exit (1);
+	}
+	destroy_lines(lines);
 }
 
 void	parser(t_cub3d *cub3d, const char *file)
 {
 	int		fd;
+	char	**lines;
 
 	fd = check_file(file);
-	parse(cub3d, fd);
-	close(fd);
+	lines = get_lines(fd);
+	if (!lines)
+	{
+		printf("Error\n: Error while reading the .cub file\n");
+		exit (1);
+	}
+	parse(cub3d, lines);
 	return ;
 }

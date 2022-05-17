@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/07 13:35:54 by aricholm         ###   ########.fr        #
+#    Updated: 2022/05/11 14:44:54 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = cub3D
 LIBFT = $(PATH_LIBFT)/libft.a
 OBJ = obj
 SRC = src
-SRCS = cub3d.c parser.c get_next_line.c
+SRCS = cub3d.c parser.c add_texture.c get_map.c cleanup.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
 

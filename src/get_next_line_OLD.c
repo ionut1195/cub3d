@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 12:51:51 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/07 15:32:57 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/09 11:46:36 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static char	*get_line(char **str)
 		return (NULL);
 	while ((*str)[i] != '\n' && (*str)[i])
 		i++;
-	out = ft_substr(*str, 0, i);
-	tmp = ft_substr(*str, i + 1, ft_strlen(*str) - i - 1);
+	out = ft_substr(*str, 0, i + 1);
+	tmp = ft_substr(*str, i + 1, ft_strlen(*str));
 	if (!out || !tmp)
 	{
 		free(out);
@@ -34,9 +34,6 @@ static char	*get_line(char **str)
 		exit(errno);
 	}
 	free(*str);
-	// if (tmp[0] == 0)
-	// 	*str = NULL;
-	// else
 	*str = tmp;
 	return (out);
 }
@@ -86,7 +83,7 @@ char	*get_next_line(int fd)
 	char		*out;
 
 	eof = 0;
-	while (!has_eol(string) && !eof)
+	while (!has_eol(string) && eof < 1)
 		eof = add_buffer(&string, fd);
 	if (eof < 0)
 	{
@@ -95,5 +92,10 @@ char	*get_next_line(int fd)
 		exit(errno);
 	}
 	out = get_line(&string);
+	if (string && !string[0])
+	{
+		free(string);
+		string = NULL;
+	}
 	return (out);
 }

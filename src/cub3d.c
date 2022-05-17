@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/07 12:37:44 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:12:00 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->textures->west = NULL;
 	cub3d->textures->floor = 0;
 	cub3d->textures->ceiling = 0;
+	cub3d->textures->flag = EMPTY;
 }
 
 int	main(int argc, char const *argv[])
