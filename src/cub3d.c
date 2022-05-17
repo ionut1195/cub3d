@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 10:53:30 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 11:20:59 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char const *argv[])
 	cub3d.textures = &textures;
 	init_cub3d(&cub3d);
 	parser(&cub3d, argv[1]);
-//	validate(&cub3d);
+	validate(&cub3d);
 	destroy_everything(&cub3d);
 	return (0);
 }
