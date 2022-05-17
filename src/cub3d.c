@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 11:20:59 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:48:50 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ static void	init_player(t_player *player)
 	player->v.y = 0;
 	player->v.z = 0;
 }*/
+void	exit_error(t_cub3d *cub3d, const char *msg)
+{
+	printf("Error\n%s\n", msg);
+	destroy_everything(cub3d);
+	exit (1);
+}
 
 static void	init_cub3d(t_cub3d *cub3d)
 {
@@ -40,6 +46,7 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->map->height = 0;
 	cub3d->map->width = 0;
 	cub3d->map->map = NULL;
+	cub3d->map->startd = 0;
 	cub3d->textures->north = NULL;
 	cub3d->textures->south = NULL;
 	cub3d->textures->east = NULL;

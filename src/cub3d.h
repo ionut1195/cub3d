@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 11:21:20 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:13:33 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ typedef struct s_map {
 	int		width;
 	int		height;
 	char	**map;
+	int		startx;
+	int		starty;
+	char	startd;
 }	t_map;
 
 typedef struct s_vector {
@@ -89,8 +92,10 @@ t_bool	add_texture(t_textures *textures, const char *line);
 t_bool	get_map(t_cub3d *cub3d, const char **lines);
 
 void	validate(t_cub3d *cub3d);
+void	validate_closedwalls(t_cub3d *cub3d);
 
 //CLEANUP
+void	exit_error(t_cub3d *cub3d, const char *msg);
 void	destroy_lines(char **lines);
 void	destroy_everything(t_cub3d *cub3d);
 #endif /* CUB3D_H */

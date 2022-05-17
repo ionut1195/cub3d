@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:22:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 11:20:54 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:04:02 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	validate_texture(t_cub3d *cub3d)
 
 static t_bool	invalid_object(char c)
 {
-	const char		legal[] = "NWES01";
+	const char		legal[] = "NWES 01";
 	static t_bool	flag = FALSE;
 	int				i;
 
@@ -71,4 +71,5 @@ void	validate(t_cub3d *cub3d)
 {
 	validate_texture(cub3d);
 	validate_map(cub3d);
+	validate_closedwalls(cub3d);
 }

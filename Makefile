@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/17 11:19:44 by aricholm         ###   ########.fr        #
+#    Updated: 2022/05/17 12:56:43 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	cub3d.c\
 		add_texture.c\
 		get_map.c\
 		validate.c\
+		closed_walls.c\
 		cleanup.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
