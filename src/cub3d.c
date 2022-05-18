@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 13:48:50 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/18 11:57:11 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char const *argv[])
 
 	if (argc != 2)
 	{
-		printf("usage:\n./cub3d <mapname.cub>\n");
+		printf("usage:\n%s <mapname.cub>\n", argv[0]);
 		return (0);
 	}
 	cub3d.player = &player;

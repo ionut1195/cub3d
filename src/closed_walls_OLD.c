@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 12:14:35 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 13:50:33 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:58:12 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ static void	fill_tmp(char **tmp, t_map *map)
 		}
 		i++;
 	}
-//printtmp(tmp, map);
 }
 
 static	int	infect(char **tmp, int i, int j, t_cub3d *c)
