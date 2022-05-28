@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 13:36:28 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:40:57 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,14 @@ void	init_mlx(t_cub3d *c)
 
 	c->win = mlx_new_window(c->mlx, SCREEN_W,
 			SCREEN_H, "Cub3D");
-	c->mapw = mlx_new_window(c->mlx, c->map.width * 30,
+/*	c->mapw = mlx_new_window(c->mlx, c->map.width * 30,
 			c->map.height * 30, "Cub3D map");
 	c->wall.img = mlx_xpm_file_to_image(c->mlx, "img/green.xpm",
 			&c->wall.img_w, &c->wall.img_h);
 	c->empty.img = mlx_xpm_file_to_image(c->mlx, "img/black.xpm",
 			&c->empty.img_w, &c->empty.img_h);
 	c->smth.img = mlx_xpm_file_to_image(c->mlx, "img/blue.xpm",
-			&c->smth.img_w, &c->smth.img_h);
+			&c->smth.img_w, &c->smth.img_h);*/
 }
 
 int	printminimap(t_cub3d *cub)
@@ -123,8 +123,10 @@ int	main(int argc, char const *argv[])
 // WIP 
 	init_mlx(&cub3d);
 
-	printminimap(&cub3d);
+//	printminimap(&cub3d);
 	mlx_loop_hook(cub3d.mlx, &raycast, &cub3d);
+	mlx_hook(cub3d.win, 2, 1L << 0, &handle_key, &cub3d);
+//	mlx_key_hook(cub3d.win, &keypress, &cub3d);
 	mlx_loop(cub3d.mlx);
 
 	destroy_everything(&cub3d);

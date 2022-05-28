@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/28 13:45:06 by aricholm         ###   ########.fr        #
+#    Updated: 2022/05/28 18:42:17 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS =	cub3d.c\
 		validate.c\
 		cleanup.c\
 		draw_line.c\
-		raycast.c
+		raycast.c\
+		move.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
 

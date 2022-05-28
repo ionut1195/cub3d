@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 13:11:01 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:41:18 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 
 # define BUFFER_SIZE 10
 # define SCREEN_W 640
 # define SCREEN_H 480
+# define MOV_SPEED 0.05
+# define ROT_SPEED 0.05
 
 typedef enum e_bool { FALSE, TRUE}	t_bool;
 
@@ -41,14 +43,16 @@ typedef enum e_tflag {
 	ERROR	= 0b1000000
 }	t_tflag;
 
-// typedef enum e_mapobject {
-// 	EMPTY	= 0,
-// 	WALL	= 1,
-// 	N	= 2,
-// 	S	= 3,
-// 	E	= 4,
-// 	W	= 5
-// }	t_mapobject;
+/*		map is indexed from the upper left corner
+**		
+**		(0,0) > (1,0) > ... > (n,0)
+**		 V
+**		(0,1) > (1,1) > ... > (n,1)
+**		 V
+**		...
+**		 V
+**		(0,m) > (1,m) > ... > (n,m)
+*/
 
 typedef struct s_map {
 	int		width;
@@ -92,16 +96,6 @@ typedef struct s_player {
 	t_vector	v;
 }	t_player;
 
-typedef struct s_textures {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
-	unsigned int	floor;
-	unsigned int	ceiling;
-	t_tflag			flag;
-}	t_textures;
-
 typedef struct s_data {
 	void	*img;
 	char	*addr;
@@ -109,6 +103,20 @@ typedef struct s_data {
 	int		line_len;
 	int		endian;
 }	t_data;
+
+typedef struct s_textures {
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	t_img			no;
+	t_img			so;
+	t_img			we;
+	t_img			ea;
+	unsigned int	floor;
+	unsigned int	ceiling;
+	t_tflag			flag;
+}	t_textures;
 
 typedef struct s_mlx {
 	void	*mlx;
@@ -125,6 +133,7 @@ typedef struct s_cub3d {
 	void		*mlx;
 	void		*win;
 	void		*mapw;
+	
 	t_data		img;
 	t_img		wall;
 	t_img		empty;
@@ -144,8 +153,14 @@ void	validate_closedwalls(t_cub3d *cub3d);
 void	exit_error(t_cub3d *cub3d, const char *msg);
 void	destroy_lines(char **lines);
 void	destroy_everything(t_cub3d *cub3d);
+void	clean_close(t_cub3d *cub3d);
 
 //DRAW
+void	my_pixel_put(t_data *data, int x, int y, int color);
 void	make_line(t_data *data, t_vector from, t_vector to, int color);
 int		raycast(t_cub3d *cub);
+
+//ENGINE
+int		keypress(int key, t_cub3d *cub3d);
+int		handle_key(int key, t_cub3d *c);
 #endif /* CUB3D_H */

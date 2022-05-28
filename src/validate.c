@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:22:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 13:36:47 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:41:31 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,20 @@
 
 static void	validate_texture(t_cub3d *cub3d)
 {
-(void) cub3d;
-	return ;
+//	t_textures	*t;
+
+(void)cub3d;
+	/*t = &cub3d->textures;
+	t->no.img = mlx_xpm_file_to_image(cub3d->mlx,
+			t->north, &t->no.img_w, &t->no.img_h);
+	t->we.img = mlx_xpm_file_to_image(cub3d->mlx,
+			t->west, &t->we.img_w, &t->we.img_h);
+	t->ea.img = mlx_xpm_file_to_image(cub3d->mlx,
+			t->east, &t->ea.img_w, &t->ea.img_h);
+	t->so.img = mlx_xpm_file_to_image(cub3d->mlx,
+			t->south, &t->so.img_w, &t->so.img_h);
+	if (!t->no.img || !t->so.img || !t->ea.img || !t->we.img)
+		exit_error(cub3d, "Unable to read texture");*/
 }
 
 /*POSSIBLE LEGAL MAP OBJECTS CAN BE ADDED HERE*/

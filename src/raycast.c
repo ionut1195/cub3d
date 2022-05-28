@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 13:40:24 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:42:04 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,24 @@ static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 	color -= ray->side * 100;
 	while (ray->draw_start < ray->draw_end)
 	{
-		mlx_pixel_put(cub->mlx, cub->win, x, ray->draw_start, color);
+//		mlx_pixel_put(cub->mlx, cub->win, x, ray->draw_start, color);
+		my_pixel_put(&cub->img, x, ray->draw_start, color);
 		ray->draw_start++;
+	}
+}
+
+void blackscreen(t_data *img)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < SCREEN_W)
+	{
+		j = 0;
+		while (j < SCREEN_H)
+			my_pixel_put(img, i, j++, 0x000000);
+		i++;
 	}
 }
 
@@ -122,6 +138,7 @@ int	raycast(t_cub3d *cub3d)
 	t_ray	ray;
 
 	x = 0;
+	blackscreen(&cub3d->img);
 	while (x < SCREEN_W)
 	{
 		init_ray(x, &ray, &cub3d->player);
@@ -131,6 +148,7 @@ int	raycast(t_cub3d *cub3d)
 		draw_it(x, &ray, cub3d);
 		x++;
 	}
+	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->img.img, 0, 0);
 	return (0);
 }
 /*
@@ -139,12 +157,12 @@ int raycast(t_cub3d *cub3d)
 	double x = 0;
 	while (1)
 	{
-		mlx_clear_window(cub3d->mlx, cub3d->win);
-		sleep(1);
+//		mlx_clear_window(cub3d->mlx, cub3d->win);
+		usleep(300);
 		cub3d->player.dir.x = cos(x);
 		cub3d->player.dir.y = sin(x);
 		cub3d->player.plane.x = sin(x);
-		cub3d->player.plane.y = cos(x);
+ 		cub3d->player.plane.y = -cos(x);
 		x += 0.1;
 		raycast2(cub3d);
 	}
