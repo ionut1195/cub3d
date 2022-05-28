@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/28 18:42:17 by aricholm         ###   ########.fr        #
+#    Updated: 2022/05/28 19:04:40 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,11 @@ LFLAGS = -lm
 OS:= $(shell uname -s)
 ifeq ($(OS),Darwin)
 	MLXFLAGS = mlx/libmlx.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+	INCDIR = mac
 endif
 ifeq ($(OS),Linux)
-	MLXFLAGS = mlx_linux/libmlx.a -L/usr/X11/lib -I/opt/X11/include -lXext -lX11 -lm -lz -g	
+	MLXFLAGS = mlx_linux/libmlx.a -L/usr/X11/lib -I/opt/X11/include -lXext -lX11 -lm -lz -g
+	INCDIR = linux
 endif
 
 
@@ -50,7 +52,7 @@ $(LIBFT):
 
 $(OBJS): $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(@D)
-	$(CC) -c $(CFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -I $(INCDIR) -o $@ $<
 
 clean:
 	rm -fr $(OBJ)
