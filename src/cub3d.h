@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 18:59:22 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:12:13 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
+# include "keys.h"
 
 # define BUFFER_SIZE 10
 # define SCREEN_W 640

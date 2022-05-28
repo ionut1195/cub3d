@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:39:19 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 19:03:10 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:20:26 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void move_right(t_cub3d *c)
 		c->player.pos.y += c->player.plane.y * MOV_SPEED;
 }
 
-void rotate_right(t_cub3d *c)
+void rotate_left(t_cub3d *c)
 {
 	double old_dir_x;
 	double old_plane_x;
@@ -57,7 +57,7 @@ void rotate_right(t_cub3d *c)
 	c->player.plane.x = c->player.plane.x * cos(-ROT_SPEED) - c->player.plane.y * sin(-ROT_SPEED);
 	c->player.plane.y = old_plane_x * sin(-ROT_SPEED) + c->player.plane.y * cos(-ROT_SPEED);
 }
-void rotate_left(t_cub3d *c)
+void rotate_right(t_cub3d *c)
 {
 	double old_dir_x;
 	double old_plane_x;
@@ -72,22 +72,23 @@ void rotate_left(t_cub3d *c)
 
 int move(int key, t_cub3d *cub)
 {
-	if (key == 13)
+	if (key == KEY_W || key == KEY_UP)
 		move_up(cub);
-	else if (key == 1)
+	else if (key == KEY_S || key == KEY_DOWN)
 		move_down(cub);
-	else if (key == 0)
+	else if (key == KEY_A)
 		move_left(cub);
-	else if (key == 2)
+	else if (key == KEY_D)
 		move_right(cub);
-	else if (key == 124)
+	else if (key == KEY_LEFT)
 		rotate_left(cub);
-	else if (key == 123)
+	else if (key == KEY_RIGHT)
 		rotate_right(cub);
 	else
 		printf("in move %d\n", key);
 	return (0);
 }
+
 
 int handle_key(int key, t_cub3d *c)
 {
