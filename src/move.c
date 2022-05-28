@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:39:19 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 18:52:23 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:03:10 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void move_left(t_cub3d *c)
 void move_right(t_cub3d *c)
 {
 	if (c->map.map[(int)(c->player.pos.x + c->player.plane.x * MOV_SPEED)][(int)c->player.pos.y] != '1')
-		c->player.pos.x -= c->player.plane.x * MOV_SPEED;
+		c->player.pos.x += c->player.plane.x * MOV_SPEED;
 	if (c->map.map[(int)c->player.pos.x][(int)(c->player.pos.y + c->player.plane.y * MOV_SPEED)] != '1')
-		c->player.pos.y -= c->player.plane.y * MOV_SPEED;
+		c->player.pos.y += c->player.plane.y * MOV_SPEED;
 }
 
 void rotate_right(t_cub3d *c)
