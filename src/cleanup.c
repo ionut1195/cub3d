@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:43:33 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 17:54:16 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:00:10 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void destroy_mlx(t_cub3d *cub3d)
 	mlx_destroy_image(cub3d->mlx, cub3d->textures.we.img);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_window(cub3d->mlx, cub3d->mapw);
-	mlx_destroy_display(cub3d->mlx);
-	mlx_loop_end(cub3d->mlx);
+	// mlx_destroy_display(cub3d->mlx);
+	// mlx_loop_end(cub3d->mlx);
 	free(cub3d->mlx);
 }
 
@@ -83,8 +83,8 @@ void	clean_close(t_cub3d *cub3d)
 	mlx_destroy_image(cub3d->mlx, cub3d->img.img);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_window(cub3d->mlx, cub3d->mapw);
-	mlx_destroy_display(cub3d->mlx);
-	mlx_loop_end(cub3d->mlx);
+	// mlx_destroy_display(cub3d->mlx);
+	// mlx_loop_end(cub3d->mlx);
 	free(cub3d->mlx);
 	exit (EXIT_FAILURE);
 }
