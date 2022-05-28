@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:12:51 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/11 11:10:05 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/19 20:44:28 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,13 @@ static t_bool	add_texture2(	t_textures *textures,
 {
 	int	color;
 
+	color = str2color(&line[2]);
+	if (color == -1)
+		return (FALSE);
 	if (flag == FLOOR)
-	{	
-		color = str2color(&line[2]);
-		if (color == -1)
-			return (FALSE);
 		textures->floor = color;
-	}
 	if (flag == CEILING)
-	{
-		color = str2color(&line[2]);
-		if (color == -1)
-			return (FALSE);
 		textures->ceiling = color;
-	}
 	return (TRUE);
 }
 

@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/18 12:17:54 by aricholm         ###   ########.fr        #
+#    Updated: 2022/05/28 13:45:06 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS =	cub3d.c\
 		add_texture.c\
 		get_map.c\
 		validate.c\
-		cleanup.c
+		cleanup.c\
+		draw_line.c\
+		raycast.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
 
@@ -28,10 +30,19 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
 LFLAGS = -lm
 
+OS:= $(shell uname -s)
+ifeq ($(OS),Darwin)
+	MLXFLAGS = mlx/libmlx.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+endif
+ifeq ($(OS),Linux)
+	MLXFLAGS = mlx_linux/libmlx.a -L/usr/X11/lib -I/opt/X11/include -lXext -lX11 -lm -lz -g	
+endif
+
+
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LFLAGS) -o $(NAME) $(MLXFLAGS)
 
 $(LIBFT):	
 	@$(MAKE) -C $(PATH_LIBFT)

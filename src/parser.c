@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:56:12 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 10:52:20 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:08:29 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static void	get_texture(t_cub3d *cub3d, char *line)
 		i++;
 	if (line[i] == 0)
 		return ;
-	if (!add_texture(cub3d->textures, &line[i]))
-		cub3d->textures->flag = 0b1000000;
+	if (!add_texture(&cub3d->textures, &line[i]))
+		cub3d->textures.flag = 0b1000000;
 	return ;
 }
 
@@ -87,10 +87,10 @@ static void	parse(t_cub3d *cub3d, char **lines)
 	int	i;
 
 	i = 0;
-	while (cub3d->textures->flag != 0b111111 && lines[i]
-		&& cub3d->textures->flag != 0b1000000)
+	while (cub3d->textures.flag != 0b111111 && lines[i]
+		&& cub3d->textures.flag != 0b1000000)
 		get_texture(cub3d, lines[i++]);
-	if (cub3d->textures->flag == 0b1000000 || !lines[i])
+	if (cub3d->textures.flag == 0b1000000 || !lines[i])
 	{
 		printf("Error\n%s: Invalid texture info\n", lines[i - 1]);
 		destroy_lines(lines);

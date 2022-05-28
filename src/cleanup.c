@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:43:33 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 10:52:49 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:00:37 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	destroy_everything(t_cub3d *cub3d)
 {
 	destroy_lines(cub3d->lines);
 	cub3d->lines = NULL;
-	destroy_map(cub3d->map);
-	destroy_texture(cub3d->textures);
+	destroy_map(&cub3d->map);
+	destroy_texture(&cub3d->textures);
 }

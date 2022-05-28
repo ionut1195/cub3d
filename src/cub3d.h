@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/17 13:13:33 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/28 13:11:01 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "../libft/libft.h" // might refactor this
+# include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <errno.h>
@@ -21,8 +22,11 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "../mlx/mlx.h"
 
 # define BUFFER_SIZE 10
+# define SCREEN_W 640
+# define SCREEN_H 480
 
 typedef enum e_bool { FALSE, TRUE}	t_bool;
 
@@ -50,21 +54,42 @@ typedef struct s_map {
 	int		width;
 	int		height;
 	char	**map;
-	int		startx;
-	int		starty;
-	char	startd;
 }	t_map;
 
 typedef struct s_vector {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+//	int	z;
 }	t_vector;
+
+typedef struct s_img {
+	void	*img;
+	int		img_w;
+	int		img_h;
+}	t_img;
+
+typedef struct s_ray {
+	t_bool		hit;
+	int			step_x;
+	int			step_y;
+	int			line_height;
+	double		pwd;
+	int			side;
+	int			draw_start;
+	int			draw_end;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		camera_x;
+	t_vector	dir;
+	t_vector	map;
+	t_vector	delta_dist;
+}	t_ray;
 
 typedef struct s_player {
 	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
 	t_vector	v;
-	t_vector	cam;
 }	t_player;
 
 typedef struct s_textures {
@@ -77,12 +102,33 @@ typedef struct s_textures {
 	t_tflag			flag;
 }	t_textures;
 
+typedef struct s_data {
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_data;
+
+typedef struct s_mlx {
+	void	*mlx;
+	void	*window;
+	t_data	*curr;
+	t_data	*next;
+}	t_mlx;
+
 typedef struct s_cub3d {
 	char		**lines;
-	t_map		*map;
-	t_player	*player;
-	t_textures	*textures;
-
+	t_map		map;
+	t_player	player;
+	t_textures	textures;
+	void		*mlx;
+	void		*win;
+	void		*mapw;
+	t_data		img;
+	t_img		wall;
+	t_img		empty;
+	t_img		smth;
 }	t_cub3d;
 
 
@@ -98,4 +144,8 @@ void	validate_closedwalls(t_cub3d *cub3d);
 void	exit_error(t_cub3d *cub3d, const char *msg);
 void	destroy_lines(char **lines);
 void	destroy_everything(t_cub3d *cub3d);
+
+//DRAW
+void	make_line(t_data *data, t_vector from, t_vector to, int color);
+int		raycast(t_cub3d *cub);
 #endif /* CUB3D_H */
