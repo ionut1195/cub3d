@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 19:12:13 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/29 14:25:53 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include "keys.h"
 
 # define BUFFER_SIZE 10
-# define SCREEN_W 640
-# define SCREEN_H 480
+# define SCREEN_W 1020
+# define SCREEN_H 680
 # define MOV_SPEED 0.05
 # define ROT_SPEED 0.05
 
@@ -164,4 +164,6 @@ int		raycast(t_cub3d *cub);
 //ENGINE
 int		keypress(int key, t_cub3d *cub3d);
 int		handle_key(int key, t_cub3d *c);
+int	  handle_btnrealease(t_cub3d *c);
+int	  move(int key, t_cub3d *cub);
 #endif /* CUB3D_H */

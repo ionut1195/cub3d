@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:39:19 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 19:29:38 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/29 16:30:36 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,5 @@ int	move(int key, t_cub3d *cub)
 		rotate_right(cub);
 	else
 		printf("in move %d\n", key);
-	return (0);
-}
-
-int	handle_key(int key, t_cub3d *c)
-{
-	if (key == KEY_ESC)
-		clean_close(c);
-	else
-		move(key, c);
 	return (0);
 }

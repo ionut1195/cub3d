@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 18:42:04 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/29 15:27:08 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,11 @@ void blackscreen(t_data *img)
 	{
 		j = 0;
 		while (j < SCREEN_H)
-			my_pixel_put(img, i, j++, 0x000000);
+		{
+      while (j < SCREEN_H / 2)
+        my_pixel_put(img, i, j++, 0x9acd32);
+      my_pixel_put(img, i, j++, 0xfff8dc);
+    }
 		i++;
 	}
 }

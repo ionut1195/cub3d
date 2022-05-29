@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 11:00:55 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 14:57:47 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/05/29 16:29:20 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@
 
 /*		THIS IS FOR TESTING ONLY!!   */
 /*************************************/
-void printmap(t_map *map)
-{
-	for (int i = 0; i < map->height; i++)
-	{
-		for (int j = 0; j < map->width; j++)
-		{
-			printf("%c", map->map[j][i]);
-		}
-		printf("\n");
-	}
-}
+// void  printmap(t_map *map)
+// {
+// 	for (int i = 0; i < map->height; i++)
+// 	{
+// 		for (int j = 0; j < map->width; j++)
+// 		{
+// 			printf("%c", map->map[j][i]);
+// 		}
+// 		printf("\n");
+// 	}
+// }
 /*************************************/
 
 static void	get_map_size(t_map *map, const char **lines)
@@ -110,6 +110,5 @@ t_bool	get_map(t_cub3d *cub3d, const char **lines)
 	if (!cub3d->map.map)
 		return (FALSE);
 	fill_map(&cub3d->map, lines);
-//printmap(cub3d->map); //REMOVE THIS LINE
 	return (TRUE);
 }
