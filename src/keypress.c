@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keypress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:28:37 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/29 16:30:10 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:07:05 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	keypress(int key, t_cub3d *cub3d)
 	return (0);
 }
 
-int handle_key(int key, t_cub3d *c)
+int	handle_key(int key, t_cub3d *c)
 {
 	if (key == KEY_ESC)
 		clean_close(c);

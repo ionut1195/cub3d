@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/29 15:27:08 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:05:06 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	run_dda(t_ray *ray, t_cub3d *cub)
 		{
 			ray->side_dist_y += ray->delta_dist.y;
 			ray->map.y += ray->step_y;
-			if (ray->step_x >= 0)
+			if (ray->step_y >= 0)
 				ray->side = 0;
 			else
 				ray->side = 2;
@@ -106,34 +106,17 @@ static void	calculate_ray(t_ray *ray)
 static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 {
 	int	color;
-
-	color = 0xcd5c5c;
-	color -= ray->side * 100;
-	while (ray->draw_start < ray->draw_end)
-	{
-//		mlx_pixel_put(cub->mlx, cub->win, x, ray->draw_start, color);
-		my_pixel_put(&cub->img, x, ray->draw_start, color);
-		ray->draw_start++;
-	}
-}
-
-void blackscreen(t_data *img)
-{
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < SCREEN_W)
-	{
-		j = 0;
-		while (j < SCREEN_H)
-		{
-      while (j < SCREEN_H / 2)
-        my_pixel_put(img, i, j++, 0x9acd32);
-      my_pixel_put(img, i, j++, 0xfff8dc);
-    }
-		i++;
-	}
+	color = 0xcd5c5c;
+	color -= ray->side * 100;
+	while (i < ray->draw_start)
+		my_pixel_put(&cub->img, x, i++, cub->textures.ceiling);
+	while (i < ray->draw_end)
+		my_pixel_put(&cub->img, x, i++, color);
+	while (i < SCREEN_H)
+		my_pixel_put(&cub->img, x, i++, cub->textures.floor);
 }
 
 int	raycast(t_cub3d *cub3d)
@@ -142,7 +125,6 @@ int	raycast(t_cub3d *cub3d)
 	t_ray	ray;
 
 	x = 0;
-	blackscreen(&cub3d->img);
 	while (x < SCREEN_W)
 	{
 		init_ray(x, &ray, &cub3d->player);
@@ -155,21 +137,3 @@ int	raycast(t_cub3d *cub3d)
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->img.img, 0, 0);
 	return (0);
 }
-/*
-int raycast(t_cub3d *cub3d)
-{
-	double x = 0;
-	while (1)
-	{
-//		mlx_clear_window(cub3d->mlx, cub3d->win);
-		usleep(300);
-		cub3d->player.dir.x = cos(x);
-		cub3d->player.dir.y = sin(x);
-		cub3d->player.plane.x = sin(x);
- 		cub3d->player.plane.y = -cos(x);
-		x += 0.1;
-		raycast2(cub3d);
-	}
-	return 0;
-// WIP 
-}*/
