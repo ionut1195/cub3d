@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:07:42 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 12:47:05 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:21:54 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,4 @@ void	init_textures(t_cub3d *cub3d)
 		i++;
 	}
 }
+    
