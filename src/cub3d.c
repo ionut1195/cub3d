@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:28:58 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:22:53 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->player.dir.y = 0;
 	cub3d->player.plane.x = 0;
 	cub3d->player.plane.y = 0;
-	cub3d->player.v.x = 0;
-	cub3d->player.v.y = 0;
 	cub3d->lines = NULL;
 	cub3d->map.height = 0;
 	cub3d->map.width = 0;
 	cub3d->map.map = NULL;
+	cub3d->map.flag = FALSE;
 	while (i < 4)
 	{
 		cub3d->textures.wall[i].img = NULL;
@@ -44,6 +43,8 @@ static void	init_cub3d(t_cub3d *cub3d)
 	cub3d->textures.floor = 0;
 	cub3d->textures.ceiling = 0;
 	cub3d->textures.flag = EMPTY;
+	cub3d->mlx = NULL;
+	cub3d->img.img = NULL;
 }
 
 void	init_mlx(t_cub3d *c)

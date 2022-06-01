@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:28:03 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:23:50 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ typedef enum e_tflag {
 }	t_tflag;
 
 typedef enum e_twall {
-	T_NORTH	= 2,
 	T_SOUTH	= 0,
-	T_WEST	= 3,
 	T_EAST	= 1,
+	T_NORTH	= 2,
+	T_WEST	= 3,
 }	t_twall;
 
 /*		map is indexed from the upper left corner
@@ -67,6 +67,7 @@ typedef struct s_map {
 	int		width;
 	int		height;
 	char	**map;
+	t_bool	flag;
 }	t_map;
 
 typedef struct s_vector {
@@ -95,7 +96,6 @@ typedef struct s_player {
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
-	t_vector	v;
 }	t_player;
 
 typedef struct s_data {

@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:07:42 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:27:50 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:27:07 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ void	init_textures(t_cub3d *cub3d)
 		i++;
 	}
 }
-    
