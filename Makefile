@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 17:55:36 by aricholm          #+#    #+#              #
-#    Updated: 2022/06/01 18:45:19 by aricholm         ###   ########.fr        #
+#    Updated: 2022/06/01 18:47:20 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OS:= $(shell uname -s)
 ifeq ($(OS),Darwin)
 	MLX = @$(MAKE) -C mlx_mac
 	MLXFLAGS = -I mlx_mac  mlx_mac/libmlx.a -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
-	INCDIR = -I mac - I mlx_mac
+	INCDIR = -I mac -I mlx_mac
 	CLEANUP = cleanup_mac.c
 endif
 ifeq ($(OS),Linux)
