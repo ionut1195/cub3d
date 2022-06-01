@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 16:38:23 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:56:38 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef enum e_tflag {
 }	t_tflag;
 
 typedef enum e_twall {
-	T_NORTH	= 0,
-	T_SOUTH	= 1,
-	T_WEST	= 2,
-	T_EAST	= 3,
+	T_NORTH	= 2,
+	T_SOUTH	= 0,
+	T_WEST	= 3,
+	T_EAST	= 1,
 }	t_twall;
 
 /*		map is indexed from the upper left corner

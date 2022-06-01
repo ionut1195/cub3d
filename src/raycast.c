@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 16:45:09 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:49:36 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,13 @@ static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 	while (i < ray->draw_end)
 	{
 		if (ray->side % 2)
-			tex_x = tex->img_w * (cub->player.pos.y + ray->pwd * ray->dir.y - floor(cub->player.pos.y + ray->pwd * ray->dir.y));
+			tex_x = tex->img_w * (cub->player.pos.y + ray->pwd * ray->dir.y
+					- floor(cub->player.pos.y + ray->pwd * ray->dir.y));
 		else
-			tex_x = tex->img_w * (cub->player.pos.x + ray->pwd * ray->dir.x - floor(cub->player.pos.x + ray->pwd * ray->dir.x));
-		tex_y = tex->img_h * ((double)(i - (-ray->line_height / 2 + SCREEN_H / 2)) / (double)ray->line_height);
+			tex_x = tex->img_w * (cub->player.pos.x + ray->pwd * ray->dir.x
+					- floor(cub->player.pos.x + ray->pwd * ray->dir.x));
+		tex_y = tex->img_h * ((double)(i + (ray->line_height - SCREEN_H) / 2)
+				/ ray->line_height);
 		my_pixel_put(&cub->img, x, i,
 			get_tex_color(tex, tex_x, tex_y));
 		i++;
