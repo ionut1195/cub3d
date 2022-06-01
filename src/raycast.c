@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 14:28:34 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:35:01 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 	while (i < ray->draw_end)
 	{
 		tex_x = x % tex->img_w;//tex->img_w * (fmod(ray->map.x, 1.0) + fmod(ray->map.y, 1.0));
-		tex_y = tex->img_h * ((double)(i - ray->draw_start) / (double)ray->line_height);
+		tex_y = tex->img_h * ((double)(i - (-ray->line_height / 2 + SCREEN_H / 2)) / (double)ray->line_height);
 		my_pixel_put(&cub->img, x, i,
 			get_tex_color(tex, tex_x, tex_y));
 		i++;
