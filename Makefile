@@ -3,14 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2022/06/01 17:07:10 by aricholm         ###   ########.fr        #
-=======
-#    Updated: 2022/06/01 14:11:27 by itomescu         ###   ########.fr        #
->>>>>>> e70c7c29fbe67f3e4a70d27aa588bbc18ce27d16
+#    Created: 2022/06/01 17:55:36 by aricholm          #+#    #+#              #
+#    Updated: 2022/06/01 17:55:41 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
