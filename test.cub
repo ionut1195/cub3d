@@ -1,7 +1,7 @@
-NO ./img/wall1.xpm
-SO ./img/wall2.xpm
- WE ./img/wall3.xpm
-EA ./img/wall4.xpm
+NO ./img/wall_1.xpm
+SO ./img/wall_2.xpm
+ WE ./img/wall_3.xpm
+EA ./img/wall_4.xpm
 F 51, 25 , 0  
 C 0,128,255
 

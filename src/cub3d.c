@@ -3,27 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/29 14:28:52 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:01:09 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-/*
-static void	init_player(t_player *player)
-{
-	player->pos.x = 0;
-	player->pos.y = 0;
-	player->pos.z = 0;
-	player->cam.x = 0;
-	player->cam.y = 0;
-	player->cam.z = 0;
-	player->v.x = 0;
-	player->v.y = 0;
-	player->v.z = 0;
-}*/
+
 void	exit_error(t_cub3d *cub3d, const char *msg)
 {
 	printf("Error\n%s\n", msg);
@@ -33,26 +21,26 @@ void	exit_error(t_cub3d *cub3d, const char *msg)
 
 static void	init_cub3d(t_cub3d *cub3d)
 {
+	int	i;
+
+	i = 0;
 	cub3d->player.pos.x = 0;
 	cub3d->player.pos.y = 0;
-//	cub3d->player.pos.z = 0;
 	cub3d->player.dir.x = 0;
 	cub3d->player.dir.y = 0;
-//	cub3d->player.dir.z = 0;
 	cub3d->player.plane.x = 0;
 	cub3d->player.plane.y = 0;
-//	cub3d->player.plane.z = 0;
 	cub3d->player.v.x = 0;
 	cub3d->player.v.y = 0;
-//	cub3d->player.v.z = 0;
 	cub3d->lines = NULL;
 	cub3d->map.height = 0;
 	cub3d->map.width = 0;
 	cub3d->map.map = NULL;
-	cub3d->textures.north = NULL;
-	cub3d->textures.south = NULL;
-	cub3d->textures.east = NULL;
-	cub3d->textures.west = NULL;
+	while (i < 4)
+	{
+		cub3d->textures.wall[i].img = NULL;
+		cub3d->textures.wall_str[i++] = NULL;
+	}
 	cub3d->textures.floor = 0;
 	cub3d->textures.ceiling = 0;
 	cub3d->textures.flag = EMPTY;
@@ -64,19 +52,11 @@ void	init_mlx(t_cub3d *c)
 	c->img.img = mlx_new_image(c->mlx, SCREEN_W, SCREEN_H);
 	c->img.addr = mlx_get_data_addr(c->img.img, &c->img.bpp,
 			&c->img.line_len, &c->img.endian);
-
 	c->win = mlx_new_window(c->mlx, SCREEN_W,
 			SCREEN_H, "Cub3D");
-/*	c->mapw = mlx_new_window(c->mlx, c->map.width * 30,
-			c->map.height * 30, "Cub3D map");
-	c->wall.img = mlx_xpm_file_to_image(c->mlx, "img/green.xpm",
-			&c->wall.img_w, &c->wall.img_h);
-	c->empty.img = mlx_xpm_file_to_image(c->mlx, "img/black.xpm",
-			&c->empty.img_w, &c->empty.img_h);
-	c->smth.img = mlx_xpm_file_to_image(c->mlx, "img/blue.xpm",
-			&c->smth.img_w, &c->smth.img_h);*/
 }
 
+/*
 int	printminimap(t_cub3d *cub)
 {
 	int			row;
@@ -106,7 +86,7 @@ int	printminimap(t_cub3d *cub)
 	mlx_pixel_put(cub->mlx, cub->mapw, cub->player.pos.x * 30 + cub->player.dir.x * 5,
 			cub->player.pos.y * 30 + cub->player.dir.y * 5, 0xEE0000);
 	return (0);
-}
+}*/
 
 int	main(int argc, char const *argv[])
 {
@@ -120,16 +100,14 @@ int	main(int argc, char const *argv[])
 	init_cub3d(&cub3d);
 	parser(&cub3d, argv[1]);
 	validate(&cub3d);
-// WIP 
 	init_mlx(&cub3d);
-
+	init_textures(&cub3d);
 //	printminimap(&cub3d);
 	mlx_loop_hook(cub3d.mlx, &raycast, &cub3d);
 	mlx_hook(cub3d.win, 2, 1L << 0, &handle_key, &cub3d);
-  mlx_hook(cub3d.win, 33, 1L << 5, &handle_btnrealease, &cub3d);
+	mlx_hook(cub3d.win, 33, 1L << 5, &handle_btnrealease, &cub3d);
 //	mlx_key_hook(cub3d.win, &keypress, &cub3d);
 	mlx_loop(cub3d.mlx);
-
 	destroy_everything(&cub3d);
 	return (0);
 }

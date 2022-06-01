@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/29 19:57:13 by aricholm         ###   ########.fr        #
+#    Updated: 2022/06/01 12:29:46 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS =	cub3d.c\
 		draw_line.c\
 		raycast.c\
 		move.c\
-		keypress.c
+		keypress.c\
+		init_textures.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
 
