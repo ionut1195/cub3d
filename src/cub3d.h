@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/29 14:25:53 by itomescu         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:26:28 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include "keys.h"
 
 # define BUFFER_SIZE 10

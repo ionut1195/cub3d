@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/05/29 16:32:41 by itomescu         ###   ########.fr        #
+#    Updated: 2022/05/29 19:57:13 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRCS =	cub3d.c\
 		add_texture.c\
 		get_map.c\
 		validate.c\
-		cleanup.c\
 		draw_line.c\
 		raycast.c\
 		move.c\
@@ -34,24 +33,31 @@ LFLAGS = -lm
 
 OS:= $(shell uname -s)
 ifeq ($(OS),Darwin)
-	MLXFLAGS = mlx/libmlx.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+	MLXFLAGS = -I mlx_mac mlx_mac/libmlx.a -Lmlx -lmlx -framework OpenGL -framework AppKit
 	INCDIR = mac
+	CLEANUP = cleanup_mac.c
 endif
 ifeq ($(OS),Linux)
-	MLXFLAGS = mlx_linux/libmlx.a -L/usr/X11/lib -I/opt/X11/include -lXext -lX11 -lm -lz -g
+	MLXFLAGS = -I mlx_linux mlx_linux/libmlx.a -L/usr/X11/lib -I/opt/X11/include -lXext -lX11 -lm -lz -g
 	INCDIR = linux
+	CLEANUP = cleanup_linux.c
 endif
 
+CLEANOBJ     = $(CLEANUP:%.c=$(OBJ)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LFLAGS) -o $(NAME) $(MLXFLAGS)
+$(NAME): $(OBJS) $(CLEANOBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(CLEANOBJ) $(LIBFT) $(LFLAGS) -o $(NAME) $(MLXFLAGS)
 
 $(LIBFT):	
 	@$(MAKE) -C $(PATH_LIBFT)
 
 $(OBJS): $(OBJ)/%.o: $(SRC)/%.c
+	@mkdir -p $(@D)
+	$(CC) -c $(CFLAGS) -I $(INCDIR) -o $@ $<
+
+$(CLEANOBJ): $(OBJ)/%.o: $(SRC)/%.c
 	@mkdir -p $(@D)
 	$(CC) -c $(CFLAGS) -I $(INCDIR) -o $@ $<
 
