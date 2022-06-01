@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 13:02:28 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:38:23 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,23 +108,12 @@ typedef struct s_data {
 }	t_data;
 
 typedef struct s_textures {
-	char			*north;
-	char			*south;
-	char			*west;
-	char			*east;
 	char			*wall_str[4];
 	t_data			wall[4];
 	unsigned int	floor;
 	unsigned int	ceiling;
 	t_tflag			flag;
 }	t_textures;
-
-typedef struct s_mlx {
-	void	*mlx;
-	void	*window;
-	t_data	*curr;
-	t_data	*next;
-}	t_mlx;
 
 typedef struct s_cub3d {
 	char		**lines;
@@ -135,9 +124,6 @@ typedef struct s_cub3d {
 	void		*win;
 	void		*mapw;
 	t_data		img;
-/*	t_img		wall;
-	t_img		empty;
-	t_img		smth;*/
 }	t_cub3d;
 
 

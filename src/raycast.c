@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 14:35:01 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:45:09 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,21 +105,21 @@ static void	calculate_ray(t_ray *ray)
 
 static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 {
-	int	color;
-	int	i;
+	int		i;
 	t_data	*tex;
-	int	tex_x;
-	int	tex_y;
+	int		tex_x;
+	int		tex_y;
 
 	i = 0;
 	tex = &cub->textures.wall[ray->side];
-	color = 0xcd5c5c;
-	color -= ray->side * 100;
 	while (i < ray->draw_start)
 		my_pixel_put(&cub->img, x, i++, cub->textures.ceiling);
 	while (i < ray->draw_end)
 	{
-		tex_x = x % tex->img_w;//tex->img_w * (fmod(ray->map.x, 1.0) + fmod(ray->map.y, 1.0));
+		if (ray->side % 2)
+			tex_x = tex->img_w * (cub->player.pos.y + ray->pwd * ray->dir.y - floor(cub->player.pos.y + ray->pwd * ray->dir.y));
+		else
+			tex_x = tex->img_w * (cub->player.pos.x + ray->pwd * ray->dir.x - floor(cub->player.pos.x + ray->pwd * ray->dir.x));
 		tex_y = tex->img_h * ((double)(i - (-ray->line_height / 2 + SCREEN_H / 2)) / (double)ray->line_height);
 		my_pixel_put(&cub->img, x, i,
 			get_tex_color(tex, tex_x, tex_y));
