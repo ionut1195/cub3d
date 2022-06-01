@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:43:33 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 13:34:33 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:38:51 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	destroy_mlx(t_cub3d *cub3d)
 
 	i = 0;
 	while (i < 4)
-		mlx_destroy_image(cub3d, cub3d->textures.wall[i++].img);
+		free(cub3d->textures.wall[i++].img);
 	mlx_destroy_image(cub3d, cub3d->img.img);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
 	mlx_destroy_display(cub3d->mlx);

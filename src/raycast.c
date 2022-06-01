@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/29 20:05:06 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:28:34 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,25 @@ static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 {
 	int	color;
 	int	i;
+	t_data	*tex;
+	int	tex_x;
+	int	tex_y;
 
 	i = 0;
+	tex = &cub->textures.wall[ray->side];
 	color = 0xcd5c5c;
 	color -= ray->side * 100;
 	while (i < ray->draw_start)
 		my_pixel_put(&cub->img, x, i++, cub->textures.ceiling);
 	while (i < ray->draw_end)
-		my_pixel_put(&cub->img, x, i++, color);
+	{
+		tex_x = x % tex->img_w;//tex->img_w * (fmod(ray->map.x, 1.0) + fmod(ray->map.y, 1.0));
+		tex_y = tex->img_h * ((double)(i - ray->draw_start) / (double)ray->line_height);
+		my_pixel_put(&cub->img, x, i,
+			get_tex_color(tex, tex_x, tex_y));
+		i++;
+	}
+//		my_pixel_put(&cub->img, x, i++, color);
 	while (i < SCREEN_H)
 		my_pixel_put(&cub->img, x, i++, cub->textures.floor);
 }
