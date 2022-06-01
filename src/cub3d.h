@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 16:56:38 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:20:48 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define SCREEN_H 680
 # define MOV_SPEED 0.05
 # define ROT_SPEED 0.05
+# define MINIMAP 6
 
 typedef enum e_bool { FALSE, TRUE}	t_bool;
 
@@ -147,6 +148,7 @@ void	my_pixel_put(t_data *data, int x, int y, int color);
 void	make_line(t_data *data, t_vector from, t_vector to, int color);
 int		raycast(t_cub3d *cub);
 int		get_tex_color(t_data *t, int x, int y);
+void	print_minimap(t_cub3d *cub3d);
 
 //ENGINE
 void	init_textures(t_cub3d *cub3d);

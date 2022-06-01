@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 16:49:36 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:06:41 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ int	raycast(t_cub3d *cub3d)
 		draw_it(x, &ray, cub3d);
 		x++;
 	}
+	print_minimap(cub3d);
 	mlx_put_image_to_window(cub3d->mlx, cub3d->win, cub3d->img.img, 0, 0);
 	return (0);
 }

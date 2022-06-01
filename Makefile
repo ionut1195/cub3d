@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
-#    Updated: 2022/06/01 12:29:46 by aricholm         ###   ########.fr        #
+#    Updated: 2022/06/01 17:07:10 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRCS =	cub3d.c\
 		raycast.c\
 		move.c\
 		keypress.c\
-		init_textures.c
+		init_textures.c\
+		minimap.c
 
 OBJS     = $(SRCS:%.c=$(OBJ)/%.o)
 

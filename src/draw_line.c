@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 14:03:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/27 18:46:59 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:33:32 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	make_line_x(t_data *data, t_vector from, t_vector to, int color)
 		slope = 1;
 	else
 		slope = (double)(to.y - from.y) / (double)(to.x - from.x);
-	while (x != to.x)
+	while (x != (int)to.x)
 	{
 		my_pixel_put(data, x, y, color);
 		x++;
@@ -70,7 +70,7 @@ static void	make_line_y(t_data *data, t_vector from, t_vector to, int color)
 		slope = 1;
 	else
 		slope = (double)(to.x - from.x) / (double)(to.y - from.y);
-	while (y != to.y)
+	while (y != (int)to.y)
 	{
 		my_pixel_put(data, x, y, color);
 		y++;
