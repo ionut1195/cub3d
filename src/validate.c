@@ -6,23 +6,11 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:22:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 20:17:06 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:37:38 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	validate_texture(t_cub3d *cub3d)
-{
-	t_textures	*t;
-
-	t = &cub3d->textures;
-	if (ft_strncmp(&t->north[ft_strlen(t->north) - 4], ".xpm", 4)
-		|| ft_strncmp(&t->south[ft_strlen(t->south) - 4], ".xpm", 4)
-		|| ft_strncmp(&t->east[ft_strlen(t->east) - 4], ".xpm", 4)
-		|| ft_strncmp(&t->west[ft_strlen(t->west) - 4], ".xpm", 4))
-		exit_error(cub3d, "Texture is not a .xpm file");
-}
 
 /*POSSIBLE LEGAL MAP OBJECTS CAN BE ADDED HERE*/
 static t_bool	invalid_object(char c)

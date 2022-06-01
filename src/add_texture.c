@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 15:12:51 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/19 20:44:28 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 12:14:01 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@ t_bool	add_texture(t_textures *textures, const char *line)
 	if (flag == CEILING || flag == FLOOR)
 		return (add_texture2(textures, line, flag));
 	if (flag == NORTH)
-		textures->north = ft_strtrim(&line[3], " \t\n\v\f\r");
+		textures->wall_str[T_NORTH] = ft_strtrim(&line[3], " \t\n\v\f\r");
 	if (flag == SOUTH)
-		textures->south = ft_strtrim(&line[3], " \t\n\v\f\r");
+		textures->wall_str[T_SOUTH] = ft_strtrim(&line[3], " \t\n\v\f\r");
 	if (flag == EAST)
-		textures->east = ft_strtrim(&line[3], " \t\n\v\f\r");
+		textures->wall_str[T_EAST] = ft_strtrim(&line[3], " \t\n\v\f\r");
 	if (flag == WEST)
-		textures->west = ft_strtrim(&line[3], " \t\n\v\f\r");
+		textures->wall_str[T_WEST] = ft_strtrim(&line[3], " \t\n\v\f\r");
 	return (TRUE);
 }

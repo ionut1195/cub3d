@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:43:33 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 19:46:57 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 13:04:04 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ void	destroy_lines(char **lines)
 
 static void	destroy_texture(t_textures *texture)
 {
-	if (texture->north)
-		free(texture->north);
-	if (texture->south)
-		free(texture->south);
-	if (texture->west)
-		free(texture->west);
-	if (texture->east)
-		free(texture->east);
+	free (texture->wall_str[0]);
+	free (texture->wall_str[1]);
+	free (texture->wall_str[2]);
+	free (texture->wall_str[3]);
 }
 
 static void	destroy_map(t_map *map)
@@ -48,18 +44,15 @@ static void	destroy_map(t_map *map)
 	free(map->map);
 }
 
-static void destroy_mlx(t_cub3d *cub3d)
+static void	destroy_mlx(t_cub3d *cub3d)
 {
-	mlx_destroy_image(cub3d->mlx, cub3d->wall.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->smth.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->empty.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->img.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->textures.no.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->textures.so.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->textures.ea.img);
-	mlx_destroy_image(cub3d->mlx, cub3d->textures.we.img);
+	int	i;
+
+	i = 0;
+	while (i < 4)
+		mlx_destroy_image(cub3d, cub3d->textures.wall[i++].img);
+	mlx_destroy_image(cub3d, cub3d->img.img);
 	mlx_destroy_window(cub3d->mlx, cub3d->win);
-	mlx_destroy_window(cub3d->mlx, cub3d->mapw);
 	free(cub3d->mlx);
 }
 
@@ -71,7 +64,7 @@ void	destroy_everything(t_cub3d *cub3d)
 	destroy_texture(&cub3d->textures);
 	destroy_mlx(cub3d);
 }
-
+/*
 void	clean_close(t_cub3d *cub3d)
 {
 	destroy_everything(cub3d);
@@ -84,3 +77,4 @@ void	clean_close(t_cub3d *cub3d)
 	free(cub3d->mlx);
 	exit (EXIT_FAILURE);
 }
+*/
