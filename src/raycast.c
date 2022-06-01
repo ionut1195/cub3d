@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
 /*   Updated: 2022/06/01 17:06:41 by aricholm         ###   ########.fr       */

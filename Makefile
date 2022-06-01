@@ -3,10 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
+#    By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/07 10:21:55 by aricholm          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/06/01 17:07:10 by aricholm         ###   ########.fr        #
+=======
+#    Updated: 2022/06/01 14:11:27 by itomescu         ###   ########.fr        #
+>>>>>>> e70c7c29fbe67f3e4a70d27aa588bbc18ce27d16
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +39,7 @@ LFLAGS = -lm
 
 OS:= $(shell uname -s)
 ifeq ($(OS),Darwin)
-	MLXFLAGS = -I mlx_mac mlx_mac/libmlx.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+	MLXFLAGS = -I mlx_mac mlx_mac/libmlx.a -Lmlx_mac -lmlx -framework OpenGL -framework AppKit
 	INCDIR = mac
 	CLEANUP = cleanup_mac.c
 endif
