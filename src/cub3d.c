@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:07:17 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:28:58 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,38 +56,6 @@ void	init_mlx(t_cub3d *c)
 			SCREEN_H, "Cub3D");
 }
 
-/*
-int	printminimap(t_cub3d *cub)
-{
-	int			row;
-	int			col;
-
-	row = 0;
-	if (cub->win == NULL)
-		return (1);
-	while (row < cub->map.height)
-	{
-		col = 0;
-		while (col < cub->map.width)
-		{
-			if (cub->map.map[col][row] == '1')
-				mlx_put_image_to_window(cub->mlx, cub->mapw,
-					cub->wall.img, (col * cub->wall.img_h),
-					(row * cub->wall.img_w));
-			else if (cub->map.map[col][row] == '0')
-				mlx_put_image_to_window(cub->mlx, cub->mapw,
-					cub->smth.img, (col * cub->empty.img_h),
-					(row * cub->empty.img_w));
-			col++;
-		}
-		row++;
-	}
-	mlx_pixel_put(cub->mlx, cub->mapw, cub->player.pos.x * 30, cub->player.pos.y * 30, 0xEEEEEE);
-	mlx_pixel_put(cub->mlx, cub->mapw, cub->player.pos.x * 30 + cub->player.dir.x * 5,
-			cub->player.pos.y * 30 + cub->player.dir.y * 5, 0xEE0000);
-	return (0);
-}*/
-
 int	main(int argc, char const *argv[])
 {
 	t_cub3d		cub3d;
@@ -102,12 +70,10 @@ int	main(int argc, char const *argv[])
 	validate(&cub3d);
 	init_mlx(&cub3d);
 	init_textures(&cub3d);
-//	printminimap(&cub3d);
 	mlx_loop_hook(cub3d.mlx, &raycast, &cub3d);
 	mlx_hook(cub3d.win, 2, 1L << 0, &handle_key, &cub3d);
 	mlx_hook(cub3d.win, 33, 1L << 5, &handle_btnrealease, &cub3d);
-//	mlx_key_hook(cub3d.win, &keypress, &cub3d);
 	mlx_loop(cub3d.mlx);
-//	destroy_everything(&cub3d);
+	destroy_everything(&cub3d);
 	return (0);
 }

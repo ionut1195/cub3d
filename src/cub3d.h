@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:01:45 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:28:03 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void	destroy_everything(t_cub3d *cub3d);
 void	my_pixel_put(t_data *data, int x, int y, int color);
 void	make_line(t_data *data, t_vector from, t_vector to, int color);
 int		raycast(t_cub3d *cub);
+void	init_ray(int x, t_ray *ray, t_player *player);
 int		get_tex_color(t_data *t, int x, int y);
 void	print_minimap(t_cub3d *cub3d);
 
@@ -155,5 +156,7 @@ int		keypress(int key, t_cub3d *cub3d);
 int		handle_key(int key, t_cub3d *c);
 int		handle_btnrealease(t_cub3d *c);
 int		move(int key, t_cub3d *cub);
+void	rotate_left(t_cub3d *c);
+void	rotate_right(t_cub3d *c);
 
 #endif /* CUB3D_H */
