@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 13:01:09 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:07:17 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int	main(int argc, char const *argv[])
 	mlx_hook(cub3d.win, 33, 1L << 5, &handle_btnrealease, &cub3d);
 //	mlx_key_hook(cub3d.win, &keypress, &cub3d);
 	mlx_loop(cub3d.mlx);
-	destroy_everything(&cub3d);
+//	destroy_everything(&cub3d);
 	return (0);
 }
