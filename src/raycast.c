@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 12:13:15 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 14:35:01 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 15:07:04 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,37 @@ static void	draw_it(int x, t_ray *ray, t_cub3d *cub)
 	int	i;
 	t_data	*tex;
 	int	tex_x;
-	int	tex_y;
+	int	tex_y = 0;
+  double wall_x;
+  double tex_pos;
+  double step;
 
 	i = 0;
 	tex = &cub->textures.wall[ray->side];
 	color = 0xcd5c5c;
 	color -= ray->side * 100;
+  if (ray->side == 0)
+    wall_x = cub->player.pos.y + ray->pwd * ray->dir.y;
+  else
+    wall_x = cub->player.pos.x + ray->pwd * ray->dir.x;
+  wall_x -= floor(wall_x);
+  
+  tex_x = (int)(wall_x * (double)TEX_W);
+  // if (ray->side == 0 && ray->dir.x > 0)
+  //   tex_x = TEX_W - tex_x - 1;
+  // if ((ray->side == 1 || ray->side == 2 || ray->side == 3) && ray->dir.y < 0)
+  //   tex_x = TEX_W - tex_x - 1;
+  step = 1.0 * TEX_H / ray->line_height;
+  tex_pos = (ray->draw_start - SCREEN_H / 2 + ray->line_height / 2) *step;
 	while (i < ray->draw_start)
 		my_pixel_put(&cub->img, x, i++, cub->textures.ceiling);
 	while (i < ray->draw_end)
 	{
-		tex_x = x % tex->img_w;//tex->img_w * (fmod(ray->map.x, 1.0) + fmod(ray->map.y, 1.0));
+		// tex_x = x % tex->img_w;//tex->img_w * (fmod(ray->map.x, 1.0) + fmod(ray->map.y, 1.0));
+    tex_x = TEX_W - tex_x - 1;
 		tex_y = tex->img_h * ((double)(i - (-ray->line_height / 2 + SCREEN_H / 2)) / (double)ray->line_height);
+    // tex_y = (int)cub->player.pos.x & (TEX_H - 1);
+    // tex_pos += step;
 		my_pixel_put(&cub->img, x, i,
 			get_tex_color(tex, tex_x, tex_y));
 		i++;

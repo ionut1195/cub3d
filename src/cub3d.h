@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: itomescu <itomescu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 13:02:28 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:42:19 by itomescu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "mlx.h"
+# include "../mlx_mac/mlx.h"
 # include "keys.h"
 
 # define BUFFER_SIZE 10
@@ -30,6 +30,8 @@
 # define SCREEN_H 680
 # define MOV_SPEED 0.05
 # define ROT_SPEED 0.05
+# define TEX_W 64
+# define TEX_H 64
 
 typedef enum e_bool { FALSE, TRUE}	t_bool;
 
