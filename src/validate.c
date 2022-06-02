@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:22:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 12:37:38 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/01 20:18:06 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,19 +102,20 @@ void	validate_start(t_cub3d *cub3d)
 		j = 0;
 		while (j < map->height)
 		{
-			if (map->map[i][j] == 'N'
-				|| map->map[i][j] == 'W'
-				|| map->map[i][j] == 'E'
-				|| map->map[i][j] == 'S')
+			if (map->map[i][j] == 'N' || map->map[i][j] == 'W'
+				|| map->map[i][j] == 'E' || map->map[i][j] == 'S')
 			{
+				if (map->flag)
+					exit_error(cub3d, "Multiple starting points");
 				get_start(cub3d, i, j);
-				return ;
+				map->flag = TRUE;
 			}
 			j++;
 		}
 		i++;
 	}
-	exit_error(cub3d, "Map doesn't have a starting point");
+	if (!map->flag)
+		exit_error(cub3d, "Map doesn't have a starting point");
 }
 
 void	validate(t_cub3d *cub3d)
