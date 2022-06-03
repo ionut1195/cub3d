@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 10:12:41 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 20:22:53 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 10:21:22 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char const *argv[])
 	init_textures(&cub3d);
 	mlx_loop_hook(cub3d.mlx, &raycast, &cub3d);
 	mlx_hook(cub3d.win, 2, 1L << 0, &handle_key, &cub3d);
-	mlx_hook(cub3d.win, 33, 1L << 5, &handle_btnrealease, &cub3d);
+	mlx_hook(cub3d.win, 17, 1L << 0, &handle_btnrealease, &cub3d);
 	mlx_loop(cub3d.mlx);
 	destroy_everything(&cub3d);
 	return (0);
