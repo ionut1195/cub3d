@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 15:28:37 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 13:05:22 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 09:26:46 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	handle_key(int key, t_cub3d *c)
 
 int	handle_btnrealease(t_cub3d *c)
 {
-	mlx_destroy_window(c->mlx, c->win);
-	c->win = NULL;
+	destroy_everything(c);
+	exit(0);
 	return (0);
 }
