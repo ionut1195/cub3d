@@ -6,7 +6,7 @@
 #    By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 17:55:36 by aricholm          #+#    #+#              #
-#    Updated: 2022/06/01 18:47:20 by aricholm         ###   ########.fr        #
+#    Updated: 2022/06/03 11:57:56 by aricholm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS =	cub3d.c\
 		add_texture.c\
 		get_map.c\
 		validate.c\
+		validate2.c\
 		draw_line.c\
 		raycast.c\
 		move.c\

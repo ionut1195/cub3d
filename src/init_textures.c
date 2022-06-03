@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 12:07:42 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 20:27:07 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:51:30 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,6 @@ void	init_ray(int x, t_ray *ray, t_player *player)
 		ray->delta_dist.y = 1e30;
 	else
 		ray->delta_dist.y = fabs(1 / ray->dir.y);
-}
-
-void	validate_texture(t_cub3d *cub3d)
-{
-	t_textures	*t;
-	int			i;
-
-	i = 0;
-	t = &cub3d->textures;
-	while (i < 4)
-	{
-		if (ft_strncmp(&t->wall_str[i][ft_strlen(t->wall_str[i]) - 4],
-			".xpm", 4))
-			exit_error(cub3d, "Texture is not a .xpm file");
-		i++;
-	}
 }
 
 int	get_tex_color(t_data *t, int x, int y)

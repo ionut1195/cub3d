@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:39:19 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 18:23:35 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 10:27:23 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,5 @@ int	move(int key, t_cub3d *cub)
 		rotate_left(cub);
 	else if (key == KEY_RIGHT)
 		rotate_right(cub);
-	else
-		printf("in move %d\n", key);
 	return (0);
 }

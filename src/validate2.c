@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keypress.c                                         :+:      :+:    :+:   */
+/*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/28 15:28:37 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/03 09:27:30 by aricholm         ###   ########.fr       */
+/*   Created: 2022/06/03 11:50:50 by aricholm          #+#    #+#             */
+/*   Updated: 2022/06/03 11:53:06 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	handle_key(int key, t_cub3d *c)
+t_bool	starting_point(char c)
 {
-	if (key == KEY_ESC)
-	{
-		destroy_everything(c);
-		exit(0);
-	}
+	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
+		return (TRUE);
 	else
-		move(key, c);
-	return (0);
+		return (FALSE);
 }
 
-int	handle_btnrealease(t_cub3d *c)
+void	validate_texture(t_cub3d *cub3d)
 {
-	destroy_everything(c);
-	exit(0);
-	return (0);
+	t_textures	*t;
+	int			i;
+
+	i = 0;
+	t = &cub3d->textures;
+	while (i < 4)
+	{
+		if (ft_strncmp(&t->wall_str[i][ft_strlen(t->wall_str[i]) - 4],
+			".xpm", 4))
+			exit_error(cub3d, "Texture is not a .xpm file");
+		i++;
+	}
 }

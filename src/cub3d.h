@@ -6,9 +6,12 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 20:23:50 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:57:44 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef CUB3D_H
+#define CUB3D_H
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -131,6 +134,7 @@ typedef struct s_cub3d {
 void	parser(t_cub3d *cub3d, const char *file);
 t_bool	add_texture(t_textures *textures, const char *line);
 t_bool	get_map(t_cub3d *cub3d, const char **lines);
+t_bool	starting_point(char c);
 
 void	validate(t_cub3d *cub3d);
 void	validate_closedwalls(t_cub3d *cub3d);
@@ -158,5 +162,8 @@ int		handle_btnrealease(t_cub3d *c);
 int		move(int key, t_cub3d *cub);
 void	rotate_left(t_cub3d *c);
 void	rotate_right(t_cub3d *c);
+
+#endif /* CUB3D_H */
+
 
 #endif /* CUB3D_H */

@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 10:22:30 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 20:18:06 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:54:21 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	validate_map(t_cub3d *cub3d)
 		{
 			if (invalid_object(map->map[i][j]))
 				exit_error(cub3d, "Invalid map object");
-			if (map->map[i][j] == '0' &&
+			if ((map->map[i][j] == '0' || starting_point(map->map[i][j])) &&
 				(i == 0 || j == 0 || i == map->width || j == map->height
 				|| map->map[i - 1][j] == ' ' || map->map[i + 1][j] == ' '
 				|| map->map[i][j - 1] == ' ' || map->map[i][j + 1] == ' '))
