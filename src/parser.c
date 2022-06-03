@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:56:12 by aricholm          #+#    #+#             */
-/*   Updated: 2022/05/28 13:08:29 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:43:56 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,15 @@ static void	parse(t_cub3d *cub3d, char **lines)
 	if (cub3d->textures.flag == 0b1000000 || !lines[i])
 	{
 		printf("Error\n%s: Invalid texture info\n", lines[i - 1]);
-		destroy_lines(lines);
 		destroy_everything(cub3d);
 		exit (1);
 	}
 	while (!lines[i][0])
 		i++;
 	if (get_map(cub3d, (const char **)&lines[i]) == FALSE)
-	{
-		destroy_lines(lines);
-		exit (1);
-	}
+		exit_error(cub3d, "Error while allocating the map");
 	destroy_lines(lines);
+	cub3d->lines = NULL;
 }
 
 void	parser(t_cub3d *cub3d, const char *file)
@@ -114,6 +111,7 @@ void	parser(t_cub3d *cub3d, const char *file)
 
 	fd = check_file(file);
 	lines = get_lines(fd);
+	cub3d->lines = lines;
 	if (!lines)
 	{
 		printf("Error\n: Error while reading the .cub file\n");

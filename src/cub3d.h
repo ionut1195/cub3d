@@ -6,7 +6,7 @@
 /*   By: aricholm <aricholm@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 09:57:07 by aricholm          #+#    #+#             */
-/*   Updated: 2022/06/01 20:23:50 by aricholm         ###   ########.fr       */
+/*   Updated: 2022/06/03 11:59:19 by aricholm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_cub3d {
 void	parser(t_cub3d *cub3d, const char *file);
 t_bool	add_texture(t_textures *textures, const char *line);
 t_bool	get_map(t_cub3d *cub3d, const char **lines);
+t_bool	starting_point(char c);
 
 void	validate(t_cub3d *cub3d);
 void	validate_closedwalls(t_cub3d *cub3d);
